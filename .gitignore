@@ -1,0 +1,5 @@
+*.txt
+imgui
+addons
+build
+src/main.cpp
