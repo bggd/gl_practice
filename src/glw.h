@@ -18,10 +18,11 @@ struct Glw {
   SDL_GLContext glc;
 
   struct GlwOpt info;
+
 };
 
 
 struct Glw* glw_create(const char* title, struct GlwOpt*);
-void glw_gl_make_current(struct Glw*);
+void glw_make_current(struct Glw*);
 void glw_flip(struct Glw*);
 void glw_delete(struct Glw*);
