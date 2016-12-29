@@ -3,6 +3,8 @@
 #include <cstdarg>
 #include <cstdio>
 
+#define GL_DEF(name, ...) GL_DEF_RET(void, name, __VA_ARGS__)
+
 #ifdef SINGLESPEED_GL_GET_ERROR
 #define GL_DEF(name, ...) typedef void name##proc(__VA_ARGS__); name##proc* my_gl##name; name##proc* gl##name;
 #define GL_DEF_RET(ret, name, ...) typedef ret name##proc(__VA_ARGS__); name##proc* my_gl##name; name##proc* gl##name;
@@ -10,7 +12,9 @@
 #define GL_DEF(name, ...) typedef void name##proc(__VA_ARGS__); name##proc* gl##name;
 #define GL_DEF_RET(ret, name, ...) typedef ret name##proc(__VA_ARGS__); name##proc* gl##name;
 #endif /* SINGLESPEED_GL_DEBUG */
+
 MY_GL_LIST
+
 #undef GL_DEF
 #undef GL_DEF_RET
 
@@ -67,11 +71,14 @@ _load_gl_functions()
     return r; \
   };
 #else
-#define GL_DEF(name, ...) gl##name = (name##proc*)SDL_GL_GetProcAddress("gl"#name);
+#define GL_DEF(name, ...) GL_DEF_RET(void, name, __VA_ARGS__)
 #define GL_DEF_RET(ret, name, ...) gl##name = (name##proc*)SDL_GL_GetProcAddress("gl"#name);
 #endif /* SINGLESPEED_GL_DEBUG */
+
   MY_GL_LIST
+
 #undef GL_DEF
+#undef GL_DEF_RET
 }
 
 extern "C" void

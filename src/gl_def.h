@@ -145,14 +145,16 @@ typedef void (*MY_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, const GL
   GL_DEF(ActiveTexture, GLenum) \
 /* end of MY_GL_LIST */
 
+#define GL_DEF(name, ...) GL_DEF_RET(void, name, __VA_ARGS__)
+
 #ifdef SINGLESPEED_GL_GET_ERROR
-#define GL_DEF(name, ...) typedef void name##proc(__VA_ARGS__); extern name##proc* my_gl##name; extern name##proc* gl##name;
 #define GL_DEF_RET(ret, name, ...) typedef ret name##proc(__VA_ARGS__); extern name##proc* my_gl##name; extern name##proc* gl##name;
 #else
-#define GL_DEF(name, ...) typedef void name##proc(__VA_ARGS__); extern name##proc* gl##name;
 #define GL_DEF_RET(ret, name, ...) typedef ret name##proc(__VA_ARGS__); extern name##proc* gl##name;
 #endif /* SINGLESPEED_GL_DEBUG */
+
 MY_GL_LIST
+
 #undef GL_DEF
 #undef GL_DEF_RET
 
