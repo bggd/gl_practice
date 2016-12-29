@@ -1,5 +1,6 @@
 *.txt
 imgui
+app
 addons
 build
 src/main.cpp
