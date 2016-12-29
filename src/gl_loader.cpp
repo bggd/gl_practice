@@ -46,10 +46,13 @@ debug_output_cb(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei 
 }
 
 
+typedef GLenum glGetErrorproc();
+glGetErrorproc* glGetError;
 
 static void
 _load_gl_functions()
 {
+  glGetError = (glGetErrorproc*)SDL_GL_GetProcAddress("glGetError");
 #ifdef SINGLESPEED_GL_GET_ERROR
 #define GL_DEF(name, ...) my_gl##name = (name##proc*)SDL_GL_GetProcAddress("gl"#name); \
   gl##name = [](auto ...args) { \
