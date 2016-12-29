@@ -2,6 +2,7 @@
 
 struct GlwOpt {
 
+  bool set_pos;
   int x, y;
   int w, h;
 
