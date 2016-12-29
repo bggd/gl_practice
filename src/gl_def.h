@@ -38,6 +38,7 @@ typedef ptrdiff_t GLsizeiptr;
 
 #define GL_SCISSOR_TEST 0x0C11
 
+#define GL_DEPTH_BUFFER_BIT 0x00000100
 #define GL_COLOR_BUFFER_BIT 0x00004000
 
 #define GL_BLEND 0x0BE2
@@ -88,6 +89,8 @@ typedef ptrdiff_t GLsizeiptr;
 #define GL_TEXTURE_SWIZZLE_G 0x8E43
 #define GL_TEXTURE_SWIZZLE_B 0x8E44
 #define GL_TEXTURE_SWIZZLE_A 0x8E45
+
+#define GL_DEPTH_TEST 0x0B71
 
 
 typedef void (*MY_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar*, void*);
