@@ -46,6 +46,12 @@ glw_create(const char* title, struct GlwOpt* opt)
     SDL_GL_GetAttribute(SDL_GL_CONTEXT_FLAGS, &debug_flag);
     w->info.debug_output = debug_flag ? true : false;
 
+    if (opt->vsync) {
+      if (SDL_GL_SetSwapInterval(-1) < 0)
+        SDL_GL_SetSwapInterval(1);
+      w->info.vsync = SDL_GL_GetSwapInterval() != 0;
+    }
+
     w->info.w = width;
     w->info.h = height;
   }

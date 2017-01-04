@@ -10,6 +10,7 @@ struct GlwOpt {
   int major;
   int minor;
   bool debug_output;
+  bool vsync;
 
 };
 
