@@ -92,6 +92,9 @@ typedef ptrdiff_t GLsizeiptr;
 
 #define GL_DEPTH_TEST 0x0B71
 
+#define GL_BACK 0x0405
+#define GL_CULL_FACE 0x0B44
+
 
 typedef void (*MY_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar*, void*);
 
@@ -105,6 +108,7 @@ typedef void (*MY_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, const GL
   GL_DEF(Clear, GLbitfield) \
   GL_DEF(BlendEquation, GLenum) \
   GL_DEF(BlendFunc, GLenum, GLenum) \
+  GL_DEF(CullFace, GLenum) \
   /* Shader */ \
   GL_DEF_RET(GLuint, CreateProgram) \
   GL_DEF_RET(GLuint, CreateShader, GLenum) \
